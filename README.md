@@ -12,7 +12,9 @@ Welcome to your new dbt project!
 ### Commands:
 | command | usage | 
 | :-----: | :-----: |
-| dbt run | To run dbt jobs|
+| dbt --help | Help on CLI |
+| dbt init | Initialize a new DBT project. |
+| dbt run | To run dbt jobs |
 | dbt run --full-refresh --select <model_name> | To run dbt full refresh job for a specified model. The usual dbt run command will fail in case of schema change when we have on_schema_change = 'fail' set on any of the model config. so you must use --full-refresh --select <model_name> arg |
 | dbt compile | To complie the project and make sure all references are correct |
 | dbt snapshot | To recreate scd type 2 based tablesd defined under snapshots/ |
