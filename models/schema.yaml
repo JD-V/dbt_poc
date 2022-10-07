@@ -46,4 +46,25 @@ models:
         tests:
           - accepted_values:
               values: ['t', 'f']
-  
+
+  - name: dim_listing_w_hosts
+    tests: 
+      - dbt_expectations.expect_table_row_count_to_equal_other_table:
+          compare_model: source('airbnb', 'listings')
+    columns:
+      - name: price
+        tests:
+          - dbt_expectations.expect_column_values_to_be_of_type:
+              column_type: NUMBER        
+          - dbt_expectations.expect_column_quantile_values_to_be_between:
+              quantile: .99   # Here I am saying 99% of the values should be between specified min and max
+              min_value: 50
+              max_value: 500 
+          - dbt_expectations.expect_column_max_to_be_between:
+              max_value: 5000 # Here I am saying Max value of my column should not exceed 5000
+              config: 
+                severity: warn # Here I am saying if this test fails do not throw error but just warning
+
+
+
+

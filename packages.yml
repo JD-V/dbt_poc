@@ -1,4 +1,8 @@
 # This file contains all the packages and version info.
 packages:
     - package: dbt-labs/dbt_utils
-      version: 0.8.0
+      version: 0.9.1
+
+    - package: calogica/dbt_expectations
+      version: [">=0.6.0", "<0.7.0"]
+      # <see https://github.com/calogica/dbt-expectations/releases/latest> for the latest version tag      

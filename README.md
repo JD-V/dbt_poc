@@ -22,7 +22,8 @@ Welcome to your new dbt project!
 | dbt deps | To install third party packages defined in packages.yml |
 | dbt docs generate | To generate documentation | 
 | dbt docs serve | Light weight server to host dbt documentation html site |
-
+| dbt test --select source:<sourcedb>.<source_table> | To execute test inside sources.yaml |
+| dbt --debug test ... | to run test in a debug mode |
 
 ### schema.yml
 schema.yml file present under models/, is used to define generic and custom generic tests
