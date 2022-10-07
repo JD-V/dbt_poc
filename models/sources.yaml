@@ -1,0 +1,20 @@
+# sources.yml file contains all the information of source/raw tables.
+# it can also be used to define the freshness of source tables.
+# eg. warn_after: {count: 1, period: hour} In this case, dbt checks max value of 'loaded_at_field' and if it is older than 1 hour. dbt will throw an error
+version: 2
+sources:
+  - name: airbnb
+    schema: raw
+    tables:
+      - name: listings
+        identifier: raw_listings
+
+      - name: hosts
+        identifier: raw_hosts
+
+      - name: reviews
+        identifier: raw_reviews
+        loaded_at_field: date
+        freshness: 
+          warn_after: {count: 1, period: hour}
+          error_after: {count: 1, period: day}
