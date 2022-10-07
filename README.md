@@ -20,6 +20,9 @@ Welcome to your new dbt project!
 | dbt test --select <model_name> | To run tests associated with selected models |
 | dbt seed | To load all the files under seed/ |
 | dbt deps | To install third party packages defined in packages.yml |
+| dbt docs generate | To generate documentation | 
+| dbt docs serve | Light weight server to host dbt documentation html site |
+
 
 ### schema.yml
 schema.yml file present under models/, is used to define generic and custom generic tests

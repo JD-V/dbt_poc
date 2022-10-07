@@ -18,6 +18,7 @@ test-paths: ["tests"]
 seed-paths: ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+asset-paths: ["assets"]
 
 target-path: "target"  # directory which will store compiled SQL files
 clean-targets:         # directories to be removed by `dbt clean`
@@ -34,6 +35,8 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbtlearn:
     +materialized: view
+    +post-hooks:
+      - "GRANT SELECT ON {{this}} TO ROLE REPORTER" #This is a post hook, it will be executed after each model is created in data warehouse. {{this}} will be replaced by respective model name
     dim:
       +materialized: table    # Config indicated by + and applies to all files under models/example/
     src:
