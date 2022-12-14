@@ -35,11 +35,18 @@ clean-targets:         # directories to be removed by `dbt clean`
 models:
   dbtlearn:
     +materialized: view
+    +pre-hooks:
+      - ""
     +post-hooks:
-      - "GRANT SELECT ON {{this}} TO ROLE REPORTER" #This is a post hook, it will be executed after each model is created in data warehouse. {{this}} will be replaced by respective model name
+      - "" #This is a post hook, it will be executed after each model is created in data warehouse. {{this}} will be replaced by respective model name
     dim:
       +materialized: table    # Config indicated by + and applies to all files under models/example/
     src:
-      +materialized: ephemeral
+      +materialized: ephemeral 
     # + meaning it is built in property of dbt and we are not reffering to any subfolder
     # +materialized: view  meaning by default all the models will be materialized as a view
+
+  # materialization 
+  #  ephemeral: Meaning that the model will only live within DBT and not created in database
+  #  view:      Meaning that the model will be created as a view in database
+  #  table:     Meaning that the model will be created as a table in database
